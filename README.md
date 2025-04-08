@@ -29,58 +29,7 @@ HungamaHub is an intelligent event management platform designed to plan, persona
 ---
 
 ## 📁 Project Structure
-
-hungamahub/
-│
-├── app.py                         # Main entry point (Flask app)
-├── config.py                      # App configuration settings
-├── requirements.txt               # Python dependencies
-├── .gitignore                     # Ignore unnecessary files
-├── README.md                      # Project description
-│
-├── static/                        # All static files (CSS, JS, images, icons)
-│   ├── css/
-│   ├── js/
-│   └── images/
-│
-├── templates/                     # Jinja2 HTML templates
-│   ├── base.html
-│   ├── index.html
-│   ├── dashboard.html
-│   ├── chatbot.html
-│   └── login.html, signup.html
-│
-├── data/                          # CSV datasets
-│   └── games_dataset.csv
-│
-├── models/                        # ML models & data processing scripts
-│   ├── clustering_model.pkl
-│   └── recommender.py
-│
-├── chatbot/                       # Chatbot logic & filters
-│   ├── filters.py
-│   ├── intent_handler.py
-│   └── chatbot_engine.py
-│
-├── users/                         # User authentication and profiles
-│   ├── auth.py
-│   ├── models.py
-│   └── routes.py
-│
-├── gameplanner/                   # Game planner backend logic 
-│   ├── planner.py
-│   ├── utils.py
-│   └── scheduler.py
-│
-├── visualizer/                    # Game cluster visualization logic
-│   ├── visualizer.py
-│   └── charts.py
-│
-└── api/                           # API routes (for future frontend or mobile app)
-    ├── endpoints.py
-    └── utils.py
-
----
+hungamahub/ │ ├── app.py # Main Flask application ├── config.py # Configuration settings ├── requirements.txt # Python dependencies ├── .gitignore # Files/folders to be ignored by Git ├── README.md # Project documentation │ ├── static/ # Static assets (CSS, JS, images) │ ├── css/ │ ├── js/ │ └── images/ │ ├── templates/ # HTML templates using Jinja2 │ ├── base.html │ ├── index.html │ ├── dashboard.html │ ├── chatbot.html │ └── auth/ # Login/Signup pages │ ├── login.html │ └── signup.html │ ├── data/ # Game datasets and CSV files │ └── games_dataset.csv │ ├── models/ # Machine Learning models and scripts │ ├── clustering_model.pkl │ └── recommender.py │ ├── chatbot/ # Chatbot engine and filters │ ├── chatbot_engine.py │ ├── filters.py │ └── intent_handler.py │ ├── users/ # User authentication & profiles │ ├── auth.py │ ├── models.py │ └── routes.py │ ├── gameplanner/ # Core event planning and logic │ ├── planner.py │ ├── utils.py │ └── scheduler.py │ ├── visualizer/ # Game clustering and analytics visuals │ ├── visualizer.py │ └── charts.py │ └── api/ # REST API endpoints for mobile/web ├── endpoints.py └── utils.py
 
 ## 🔧 Setup & Run Locally
 
