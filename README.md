@@ -26,10 +26,6 @@ HungamaHub is an intelligent event management platform designed to plan, persona
 - **Libraries**: Pandas, NumPy, Scikit-learn  
 - **Hosting**: Local / Render / AWS (coming soon)
 
----
-
-## 📁 Project Structure
-hungamahub/ │ ├── app.py # Main Flask application ├── config.py # Configuration settings ├── requirements.txt # Python dependencies ├── .gitignore # Files/folders to be ignored by Git ├── README.md # Project documentation │ ├── static/ # Static assets (CSS, JS, images) │ ├── css/ │ ├── js/ │ └── images/ │ ├── templates/ # HTML templates using Jinja2 │ ├── base.html │ ├── index.html │ ├── dashboard.html │ ├── chatbot.html │ └── auth/ # Login/Signup pages │ ├── login.html │ └── signup.html │ ├── data/ # Game datasets and CSV files │ └── games_dataset.csv │ ├── models/ # Machine Learning models and scripts │ ├── clustering_model.pkl │ └── recommender.py │ ├── chatbot/ # Chatbot engine and filters │ ├── chatbot_engine.py │ ├── filters.py │ └── intent_handler.py │ ├── users/ # User authentication & profiles │ ├── auth.py │ ├── models.py │ └── routes.py │ ├── gameplanner/ # Core event planning and logic │ ├── planner.py │ ├── utils.py │ └── scheduler.py │ ├── visualizer/ # Game clustering and analytics visuals │ ├── visualizer.py │ └── charts.py │ └── api/ # REST API endpoints for mobile/web ├── endpoints.py └── utils.py
 
 ## 🔧 Setup & Run Locally
 
