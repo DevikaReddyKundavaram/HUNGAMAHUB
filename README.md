@@ -1,4 +1,4 @@
-# 🎉 HungamaHub - Your AI-Powered Event Game Planner 🇮🇳
+# 🎉 HungamaHub - AI-Powered Game Provider 🇮🇳
 
 **From tradition to trend – we bring the hungama!**  
 HungamaHub is an intelligent event management platform designed to plan, personalize, and power up events through culturally rich and dynamic game experiences. Built with Python & Flask, it's your one-stop destination for hosting unforgettable events with the help of AI.
