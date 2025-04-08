@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Games Grouped by Occasion</h2>
+  {% for occasion, games in grouped.items() %}
+    <h4 class="mt-4">{{ occasion }}</h4>
+    <div class="row">
+      {% for game in games %}
+        <div class="col-md-4">
+          <div class="card p-3">
+            <h5>{{ game.game_description }}</h5>
+            <p><strong>Game_Name:</strong>{{ game.game_name }}</p>
+            <p><strong>Genre:</strong> {{ game.genre }}</p>
+            <p><strong>Game Type:</strong> {{ game.game_type }}</p>
+            <p><strong>Age Group:</strong> {{ game.age_group }}</p>
+            <p><strong>Items:</strong> {{ game.items_needed }}</p>
+            <p><strong>Difficulty:</strong> {{ game.difficulty }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% endblock %}

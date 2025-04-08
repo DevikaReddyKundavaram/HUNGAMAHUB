@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Game Clusters{% endblock %}
+
+{% block content %}
+<div class="text-center mb-4">
+    <h2>Game Clusters Visualization</h2>
+    <img src="data:image/png;base64,{{ plot_url }}" class="img-fluid rounded shadow">
+</div>
+
+{% for cluster, games in clusters.items() %}
+    <h3 class="mt-5 text-primary">Cluster {{ cluster }}</h3>
+    <div class="row">
+        {% for game in games %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ game.game_description }}</h5>
+                    <p class="card-text"><strong>Game_Name:</strong> {{ game.game_name }}</p>
+                    <p class="card-text"><strong>Occasion:</strong> {{ game.occasion }}</p>
+                    <p class="card-text"><strong>Genre:</strong> {{ game.genre }}</p>
+                    <p class="card-text"><strong>Game Type:</strong> {{ game.game_type }}</p>
+                    <p class="card-text"><strong>Age Group:</strong> {{ game.age_group }}</p>
+                    <p class="card-text"><strong>Items Needed:</strong> {{ game.items_needed }}</p>
+                    <p class="card-text"><strong>Difficulty:</strong> {{ game.difficulty }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+{% endblock %}

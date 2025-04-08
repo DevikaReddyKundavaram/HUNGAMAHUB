@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}HungamaHub | Dashboard{% endblock %}
+
+{% block content %}
+<style>
+  .card:hover {
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .section-title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #343a40;
+    text-align: center;
+  }
+
+  .card-title {
+    font-weight: 600;
+  }
+
+  .emoji {
+    font-size: 1.4rem;
+    margin-right: 5px;
+  }
+
+  .btn-sm {
+    border-radius: 30px;
+    font-weight: 500;
+  }
+
+  .card-body p {
+    font-size: 0.95rem;
+  }
+
+  .bg-violet {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+  }
+
+  .bg-pink {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    color: white;
+  }
+
+  .bg-gold {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    color: white;
+  }
+
+  .bg-darkblue {
+    background: #1e2a38;
+    color: white;
+  }
+  .bg-sunset {
+  background: linear-gradient(135deg, #f953c6, #b91d73);
+  color: white;
+}
+.bg-hungama-dost {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    color: white;
+    border-radius: 12px;
+  }
+
+  .btn-hungama {
+    background-color: #fff;
+    color: #ee0979;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-hungama:hover {
+    background-color: #ee0979;
+    color: #fff;
+  }
+</style>
+
+<h1 class="section-title">🎉 Welcome to HungamaHub!</h1>
+
+<!-- 🔥 Featured Sections -->
+<div class="row mb-5">
+  <div class="col-md-4">
+    <div class="card bg-violet shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title"><span class="emoji">🔥</span>Popular Games</h4>
+        <p class="card-text">Discover this week’s viral games across India!</p>
+        <a href="/popular_games" class="btn btn-light btn-sm">Explore</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card bg-pink shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title"><span class="emoji">🚀</span>Upcoming Contests</h4>
+        <p class="card-text">Top games + cool prizes = total Hungama!</p>
+        <a href="/upcoming_contests" class="btn btn-light btn-sm">See What’s Hot</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card bg-gold shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title"><span class="emoji">🧠</span>Smart Game Planner</h4>
+        <p class="card-text">Get AI-curated games for your occasion.</p>
+        <a href="/planner" class="btn btn-light btn-sm">Plan Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 🎯 Game Categories -->
+<h2 class="section-title">🎯 Explore By Category</h2>
+<div class="row text-center mb-5">
+  <div class="col-md-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5><span class="emoji">🎊</span>By Occasion</h5>
+        <p>Shaadi, Holi, Diwali – curated lists await!</p>
+        <a href="/group_by_occasion" class="btn btn-primary btn-sm">Show</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5><span class="emoji">🎭</span>By Genre</h5>
+        <p>From drama to dare – pick your vibe.</p>
+        <a href="/group_by_genre" class="btn btn-primary btn-sm">View</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5><span class="emoji">🔍</span>Multi-Grouping</h5>
+        <p>Combine filters and find hidden gems!</p>
+        <a href="/grouped_multi" class="btn btn-primary btn-sm">Try It</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5><span class="emoji">🤖</span>Clustered Games</h5>
+        <p>ML-powered groups for ultimate game discovery.</p>
+        <a href="/clusters" class="btn btn-primary btn-sm">Explore</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 📅 Event Teaser -->
+<div class="card mb-5 shadow-sm">
+  <div class="card-body text-center">
+    <h4 class="card-title text-success"><span class="emoji">📅</span>Upcoming Events</h4>
+    <ul class="list-group list-group-flush mb-3">
+      <li class="list-group-item">👰 Mehendi Night Games - April 15</li>
+      <li class="list-group-item">🎂 25th Birthday Bash - April 18</li>
+      <li class="list-group-item">🏏 IPL Party Games - April 20</li>
+    </ul>
+    <a href="/events" class="btn btn-outline-success btn-sm">View All Events</a>
+  </div>
+</div>
+
+<!-- 💬 Chatbot Section -->
+<div class="card shadow-sm bg-hungama-dost mb-5">
+    <div class="card-body text-center">
+      <h4 class="card-title"><span class="emoji">🤖</span> Talk to <strong>HungamaDost</strong></h4>
+      <p class="card-text">Need help or bored? HungamaDost's got your back 💬</p>
+      <a href="/chat" class="btn btn-hungama btn-sm">Start Chat</a>
+    </div>
+  </div>
+{% endblock %}

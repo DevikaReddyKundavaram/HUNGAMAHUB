@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Popular Games{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-primary">🔥 Most Popular Games</h2>
+
+    <div class="row">
+        {% for game in games %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ game.game_description }}</h5>
+                   
+                    <p class="card-text"><strong>Game Name:</strong> {{ game.game_name }}</p>
+                    <p class="card-text"><strong>Occasion:</strong> {{ game.occasion }}</p>
+                    <p class="card-text"><strong>Genre:</strong> {{ game.genre }}</p>
+                    <p class="card-text"><strong>Game Type:</strong> {{ game.game_type }}</p>
+                    <p class="card-text"><strong>Age Group:</strong> {{ game.age_group }}</p>
+                    <p class="card-text"><strong>Items Needed:</strong> {{ game.items_needed }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

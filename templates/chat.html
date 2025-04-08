@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">🗣️ Talk to HungamaBot</h2>
+    <div id="chatbox" style="height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+        <div class="bot-msg">Hi! I'm HungamaBot 😄 Do you want me to suggest some games?</div>
+        <div class="btn-group my-2">
+            <button class="btn btn-success" onclick="sendQuickReply('Yes')">Yes</button>
+            <button class="btn btn-danger" onclick="sendQuickReply('No')">No</button>
+        </div>
+    </div>
+    <div class="input-group mt-3">
+        <input type="text" id="user_input" class="form-control" placeholder="Type your message..." onkeypress="handleEnter(event)">
+        <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    let state = "initial";
+    let filters = {};
+
+    function handleEnter(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    }
+
+    function sendQuickReply(text) {
+        document.getElementById('user_input').value = text;
+        sendMessage();
+    }
+
+    function sendMessage() {
+        const inputBox = document.getElementById('user_input');
+        const message = inputBox.value.trim();
+        if (!message) return;
+
+        addUserMessage(message);
+        inputBox.value = "";
+
+        fetch('/chatbot', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_input: message, state: state, filters: filters }),
+        })
+        .then(res => res.json())
+        .then(data => {
+            state = data.state || 'initial';
+            filters = data.filters || {};
+
+            if (data.games && data.games.length > 0) {
+                data.games.forEach(game => addGameCard(game));
+            } else {
+                addBotMessage(data.response);
+            }
+
+            if (data.options) {
+                showOptions(data.options);
+            }
+        });
+    }
+
+    function addUserMessage(msg) {
+        const chatbox = document.getElementById('chatbox');
+        chatbox.innerHTML += `<div class='text-end user-msg'><strong>You:</strong> ${msg}</div>`;
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    function addBotMessage(msg) {
+        const chatbox = document.getElementById('chatbox');
+        chatbox.innerHTML += `<div class='bot-msg'><strong>HungamaBot:</strong> ${msg.replace(/\n/g, "<br>")}</div>`;
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    function showOptions(options) {
+        const chatbox = document.getElementById('chatbox');
+        let btns = '<div class="btn-group my-2">';
+        options.forEach(opt => {
+            btns += `<button class="btn btn-outline-primary" onclick="sendQuickReply('${opt}')">${opt}</button>`;
+        });
+        btns += '</div>';
+        chatbox.innerHTML += btns;
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    function addGameCard(game) {
+        const chatbox = document.getElementById('chatbox');
+        const card = `
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">🎮 ${game.game_name}</h5>
+                    <p class="card-text">📝 <strong>Description:</strong> ${game.description}</p>
+                    <p class="card-text">🌟 <strong>Popularity:</strong> ${game.popularity_rating || 'N/A'}</p>
+                    <p class="card-text">🧰 <strong>Items Needed:</strong> ${game.items_needed || 'N/A'}</p>
+                    <p class="card-text">🎯 <strong>Occasion:</strong> ${game.occasion}</p>
+                    <p class="card-text">🧑‍🤝‍🧑 <strong>Players:</strong> ${game.min_players} - ${game.max_players}</p>
+                    <p class="card-text">⏱️ <strong>Duration:</strong> ${game.duration_minutes} minutes</p>
+                    <p class="card-text">💪 <strong>Energy Level:</strong> ${game.energy_level}</p>
+                    <p class="card-text">🏕️ <strong>Venue Type:</strong> ${game.venue_type}</p>
+                    <p class="card-text">💡 <strong>Customizations:</strong> ${game.customization_options || 'None'}</p>
+                    <p class="card-text">🧑‍🏫 <strong>Facilitator Required:</strong> ${game.facilitator_required}</p>
+                </div>
+            </div>`;
+        chatbox.innerHTML += card;
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
+</script>
+{% endblock %}
